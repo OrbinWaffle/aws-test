@@ -4,17 +4,34 @@ import json
 
 # api-endpoint
 # URL = "https://cniyl5hf4nr7qy6m4bkhjclfii0umqoh.lambda-url.us-east-2.on.aws/"
-URL = "https://wu003u1jrj.execute-api.us-east-2.amazonaws.com/"
+URL = "https://ovz97nwwca.execute-api.us-east-1.amazonaws.com/"
 
 def main():
-    user_input = input("What do you want to do: ")
-    if(user_input == "0"):
-      say_hi()
-    elif(user_input == "1"):
-       greet()
+    # say_hi()
+    get_restaurant()
+    # user_input = input("What do you want to do: ")
+    # if(user_input == "0"):
+    #     say_hi()
+    # elif(user_input == "1"):
+    #     greet()
+
+def get_restaurant():
+    BODY = {
+        "restaurants": [
+            {
+            "name": "your mom's shack",
+            "rating": "5"
+            },
+            {
+            "name": "Panda Wok",
+            "rating": "2"
+            }
+        ]
+    }
+    send_request(URL + "GetRestaurantReccomendation", BODY)
 
 def say_hi():
-    send_request(URL + "say_hi", "")
+    send_request(URL + "HelloWorld", "")
 
 def greet():
     fname = input("Please provide your first name: ")
